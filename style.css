@@ -1,0 +1,233 @@
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #5d001e;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 8px solid #ff6b8b;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #ff4d7e;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #ffd6e0;
+        }
+        
+        .message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #5d001e;
+            padding: 0 20px;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .valentine-btn {
+            padding: 20px 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            min-width: 180px;
+        }
+        
+        .yes-btn {
+            background-color: #ff6b8b;
+            color: white;
+            transform: scale(1);
+        }
+        
+        .yes-btn:hover {
+            background-color: #ff4d7e;
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(255, 107, 139, 0.4);
+        }
+        
+        .no-btn {
+            background-color: #4a9eff;
+            color: white;
+        }
+        
+        .no-btn:hover {
+            background-color: #2d8cff;
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(74, 158, 255, 0.4);
+        }
+        
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            z-index: 1;
+            user-select: none;
+            pointer-events: none;
+        }
+        
+        .heart {
+            color: #ff6b8b;
+            font-size: 2rem;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .balloon {
+            width: 50px;
+            height: 70px;
+            border-radius: 50%;
+            position: relative;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .balloon:before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .balloon.red {
+            background-color: #ff6b8b;
+        }
+        
+        .balloon.pink {
+            background-color: #ffafcc;
+        }
+        
+        .balloon.purple {
+            background-color: #cdb4db;
+        }
+        
+        .sticker {
+            font-size: 3rem;
+            animation: float 10s infinite ease-in-out;
+        }
+        
+        .success-message {
+            display: none;
+            font-size: 2.5rem;
+            font-family: 'Dancing Script', cursive;
+            color: #ff4d7e;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            border: 5px dashed #ff6b8b;
+        }
+        
+        .counter {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #5d001e;
+            font-weight: bold;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .pulse {
+            animation: pulse 0.5s infinite alternate;
+        }
+        
+        /* When No is clicked - chaos mode */
+        .chaos .yes-btn {
+            animation: bounce 0.5s infinite alternate, spin 2s infinite linear;
+        }
+        
+        .chaos .floating-element {
+            animation-duration: 2s !important;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .message {
+                font-size: 1.2rem;
+            }
+            
+            .valentine-btn {
+                padding: 15px 30px;
+                font-size: 1.5rem;
+                min-width: 140px;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .container {
+                padding: 25px 15px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
