@@ -37,10 +37,11 @@ body {
 
 /* Main content wrapper */
 .content-wrapper {
-    width: 100%;
+    width: 100vh;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 30px;
+    margin-left: 30px;
     padding: 40px 30px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
