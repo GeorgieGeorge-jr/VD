@@ -1,233 +1,402 @@
-   * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
-            min-height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #5d001e;
-        }
-        
-        .container {
-            max-width: 900px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            border: 8px solid #ff6b8b;
-        }
-        
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            color: #ff4d7e;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 0 #ffd6e0;
-        }
-        
-        .message {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: #5d001e;
-            padding: 0 20px;
-        }
-        
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 20;
-        }
-        
-        .valentine-btn {
-            padding: 20px 50px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Nunito', sans-serif;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            min-width: 180px;
-        }
-        
-        .yes-btn {
-            background-color: #ff6b8b;
-            color: white;
-            transform: scale(1);
-        }
-        
-        .yes-btn:hover {
-            background-color: #ff4d7e;
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px rgba(255, 107, 139, 0.4);
-        }
-        
-        .no-btn {
-            background-color: #4a9eff;
-            color: white;
-        }
-        
-        .no-btn:hover {
-            background-color: #2d8cff;
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px rgba(74, 158, 255, 0.4);
-        }
-        
-        /* Floating elements */
-        .floating-element {
-            position: absolute;
-            z-index: 1;
-            user-select: none;
-            pointer-events: none;
-        }
-        
-        .heart {
-            color: #ff6b8b;
-            font-size: 2rem;
-            animation: float 6s infinite ease-in-out;
-        }
-        
-        .balloon {
-            width: 50px;
-            height: 70px;
-            border-radius: 50%;
-            position: relative;
-            animation: float 8s infinite ease-in-out;
-        }
-        
-        .balloon:before {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 30px;
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-        
-        .balloon.red {
-            background-color: #ff6b8b;
-        }
-        
-        .balloon.pink {
-            background-color: #ffafcc;
-        }
-        
-        .balloon.purple {
-            background-color: #cdb4db;
-        }
-        
-        .sticker {
-            font-size: 3rem;
-            animation: float 10s infinite ease-in-out;
-        }
-        
-        .success-message {
-            display: none;
-            font-size: 2.5rem;
-            font-family: 'Dancing Script', cursive;
-            color: #ff4d7e;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            border: 5px dashed #ff6b8b;
-        }
-        
-        .counter {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #5d001e;
-            font-weight: bold;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(5deg); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .pulse {
-            animation: pulse 0.5s infinite alternate;
-        }
-        
-        /* When No is clicked - chaos mode */
-        .chaos .yes-btn {
-            animation: bounce 0.5s infinite alternate, spin 2s infinite linear;
-        }
-        
-        .chaos .floating-element {
-            animation-duration: 2s !important;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            .message {
-                font-size: 1.2rem;
-            }
-            
-            .valentine-btn {
-                padding: 15px 30px;
-                font-size: 1.5rem;
-                min-width: 140px;
-            }
-            
-            .buttons-container {
-                gap: 20px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            .container {
-                padding: 25px 15px;
-            }
-            
-            .buttons-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #5d001e;
+    position: relative;
+    width: 100%;
+}
+
+/* Container for all content */
+.container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Main content wrapper */
+.content-wrapper {
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 8px solid #ff6b8b;
+    position: relative;
+}
+
+/* Typography */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.8rem, 8vw, 4.5rem);
+    color: #ff4d7e;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 #ffd6e0;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.message {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #5d001e;
+    padding: 0 10px;
+}
+
+.message p {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(20px, 5vw, 40px);
+    margin-top: 50px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 20;
+    width: 100%;
+}
+
+.valentine-btn {
+    padding: clamp(15px, 4vw, 20px) clamp(30px, 6vw, 50px);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    min-width: clamp(140px, 30vw, 180px);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.yes-btn {
+    background-color: #ff6b8b;
+    color: white;
+    transform: scale(1);
+}
+
+.yes-btn:hover {
+    background-color: #ff4d7e;
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 107, 139, 0.4);
+}
+
+.no-btn {
+    background-color: #4a9eff;
+    color: white;
+}
+
+.no-btn:hover {
+    background-color: #2d8cff;
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(74, 158, 255, 0.4);
+}
+
+/* Floating Elements */
+.floating-element {
+    position: absolute;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.heart {
+    color: #ff6b8b;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    animation: float 6s infinite ease-in-out;
+}
+
+.balloon {
+    width: clamp(30px, 8vw, 50px);
+    height: clamp(42px, 11vw, 70px);
+    border-radius: 50%;
+    position: relative;
+    animation: float 8s infinite ease-in-out;
+}
+
+.balloon:before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.balloon.red {
+    background-color: #ff6b8b;
+}
+
+.balloon.pink {
+    background-color: #ffafcc;
+}
+
+.balloon.purple {
+    background-color: #cdb4db;
+}
+
+.sticker {
+    font-size: clamp(2rem, 6vw, 3rem);
+    animation: float 10s infinite ease-in-out;
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-family: 'Dancing Script', cursive;
+    color: #ff4d7e;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    border: 5px dashed #ff6b8b;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.celebration-text {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-top: 10px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.counter {
+    margin-top: 20px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #5d001e;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg) translateX(0); 
+    }
+    25% { 
+        transform: translateY(-20px) rotate(5deg) translateX(5px); 
+    }
+    50% { 
+        transform: translateY(-30px) rotate(0deg) translateX(-5px); 
+    }
+    75% { 
+        transform: translateY(-20px) rotate(-5deg) translateX(5px); 
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.1); 
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-20px); 
+    }
+}
+
+@keyframes spin {
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(360deg); 
+    }
+}
+
+@keyframes celebration {
+    0% { 
+        transform: translateY(100vh) rotate(0deg); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(-100px) rotate(360deg); 
+        opacity: 0; 
+    }
+}
+
+.pulse {
+    animation: pulse 0.5s infinite alternate;
+}
+
+/* Chaos mode styles */
+body.chaos .yes-btn {
+    animation: bounce 0.5s infinite alternate, spin 2s infinite linear;
+}
+
+body.chaos .floating-element {
+    animation-duration: 2s !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 30px 20px;
+    }
+    
+    .buttons-container {
+        margin-top: 30px;
+    }
+    
+    .valentine-btn {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .content-wrapper {
+        padding: 25px 15px;
+        border-width: 5px;
+    }
+    
+    .buttons-container {
+        gap: 15px;
+    }
+    
+    .valentine-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .message {
+        padding: 0 5px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 320px) {
+    .content-wrapper {
+        padding: 20px 10px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .message {
+        font-size: 0.9rem;
+    }
+    
+    .valentine-btn {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+}
+
+/* For very large screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+    
+    .content-wrapper {
+        padding: 50px 40px;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+    }
+    
+    .content-wrapper {
+        padding: 20px 30px;
+    }
+    
+    h1 {
+        margin-bottom: 10px;
+        font-size: 2.5rem;
+    }
+    
+    .message {
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+    
+    .buttons-container {
+        margin-top: 20px;
+    }
+    
+    .counter {
+        margin-top: 10px;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .content-wrapper {
+        backdrop-filter: blur(20px);
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white !important;
+    }
+    
+    .content-wrapper {
+        border: 2px solid #ff6b8b;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+    
+    .buttons-container,
+    .counter,
+    #floatingElements {
+        display: none !important;
+    }
+    
+    .success-message {
+        display: block !important;
+        border: 2px dashed #ff6b8b;
+    }
+}
